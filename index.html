@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>School Bulletin</title>
+    <meta name="description" content="School calendar and bulletins for parents." />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 id="school-name">School Bulletin</h1>
+      <p class="tagline">Calendar &amp; bulletins for parents</p>
+    </header>
+
+    <main>
+      <section class="card" aria-labelledby="calendar-heading">
+        <h2 id="calendar-heading">Calendar</h2>
+        <div class="calendar-wrap">
+          <iframe
+            id="calendar-frame"
+            title="School calendar"
+            src=""
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
+          <p id="calendar-fallback" class="muted" hidden>
+            Calendar isn't configured yet. See README.md.
+          </p>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="bulletins-heading">
+        <h2 id="bulletins-heading">Bulletins</h2>
+        <p id="bulletins-status" class="muted">Loading bulletins…</p>
+        <ul id="bulletins" class="bulletins"></ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="muted">Updated automatically from Google Calendar &amp; Google Drive.</p>
+    </footer>
+  </body>
+</html>
