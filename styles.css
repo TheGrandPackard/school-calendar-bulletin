@@ -33,13 +33,19 @@ a:hover, a:focus { text-decoration: underline; }
 .site-header {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem 1rem 1rem;
+  padding: 1.5rem 1rem 0.5rem;
 }
 
 .site-header h1 {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+@media (min-width: 700px) {
+  .site-header { padding: 2rem 1rem 1rem; }
+  .site-header h1 { font-size: 1.75rem; }
 }
 
 .tagline {
@@ -74,10 +80,9 @@ main {
 .calendar-wrap {
   position: relative;
   width: 100%;
-  /* 4:3-ish aspect on mobile; flatter on wide screens via min-height below. */
-  aspect-ratio: 4 / 3;
-  min-height: 480px;
+  height: 520px;
 }
+.calendar-wrap.agenda { height: 540px; }
 #calendar-frame {
   position: absolute;
   inset: 0;
@@ -89,7 +94,7 @@ main {
 }
 
 @media (min-width: 700px) {
-  .calendar-wrap { aspect-ratio: 16 / 10; min-height: 560px; }
+  .calendar-wrap { height: 600px; }
 }
 
 /* Bulletins */

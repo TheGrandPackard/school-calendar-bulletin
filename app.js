@@ -10,19 +10,26 @@
   function setSchoolName(name) {
     if (!name) return;
     const el = document.getElementById("school-name");
-    if (el) el.textContent = name + " Bulletin";
-    document.title = name + " Bulletin";
+    if (el) el.textContent = name;
+    document.title = name + " — Bulletin";
   }
 
   function setCalendar(src) {
     const frame = document.getElementById("calendar-frame");
     const fallback = document.getElementById("calendar-fallback");
-    if (src && src.startsWith("http")) {
-      frame.src = src;
-    } else {
+    if (!src || !src.startsWith("http")) {
       frame.hidden = true;
       if (fallback) fallback.hidden = false;
+      return;
     }
+    // Google Calendar's month view is unreadable at phone widths.
+    // Switch to AGENDA (schedule list) when the viewport is narrow.
+    const narrow = window.matchMedia("(max-width: 640px)").matches;
+    if (narrow && !/[?&]mode=/i.test(src)) {
+      src += (src.includes("?") ? "&" : "?") + "mode=AGENDA";
+      document.querySelector(".calendar-wrap")?.classList.add("agenda");
+    }
+    frame.src = src;
   }
 
   async function loadBulletins(folderId, apiKey) {
